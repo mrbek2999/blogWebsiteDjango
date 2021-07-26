@@ -1,0 +1,16 @@
+{% extends 'blocks/base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <div class="d-flex">
+    <div class="col-4 col-lg-4"></div>
+    <div class="col-4 col-lg-4 pt-lg-5">
+        <h2 class="text-center">Registiration</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-lg w-100" data-toggle="button" aria-pressed="false">Register</button>
+        </form>
+        <h4 class="text-center p-2"><a href="{% url 'login-page' %}">Log In</a></h4></div>
+    <div class="col-4 col-lg-4"></div></div>
+
+{% endblock %}

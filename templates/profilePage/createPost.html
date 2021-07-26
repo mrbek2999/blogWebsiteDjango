@@ -1,0 +1,18 @@
+{% extends 'blocks/base.html' %}
+{% block title %} Post Yaratish {% endblock %}
+{% block content %}
+    <div class="form-group col-lg-6 p-5">
+        <a href="{% url 'main-page' %}">< Bosh Sahifa</a>
+        <h2>Post Yaratish</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-secondary">Yaratish</button>
+        </form>
+    </div>
+    {% load static %}
+    <script src="{% static 'assets/js/jquery-3.3.1.slim.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
+{% endblock %}

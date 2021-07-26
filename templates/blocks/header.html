@@ -1,0 +1,61 @@
+<header>
+    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a href="{% url 'main-page' %}" class="nav-link active">Bosh Sahifa</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'create-post' %}" class="nav-link active">Post Yaratish</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categories
+                    </a>
+                    {% if categories %}
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for category in categories %}
+                                <a class="dropdown-item"
+                                   href="/category/{{ category.slug }}">{{ category.title }}</a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Places
+                    </a>
+                    {% if places %}
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for place in places %}
+                                <a class="dropdown-item" href="/place/{{ place.slug }}">{{ place.title }}</a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Kabinet
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="{% url 'user-page' %}" class="dropdown-item">Mening Postlarim</a>
+                        <a href="{% url 'edit-user' %}" class="dropdown-item">Sozlamalar</a>
+                    </div>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="nav-link active">Chiqish</a>
+                    </li>
+                {% elif user.is_anonymous %}
+                    <li class="nav-item">
+                        <a href="{% url 'login-page' %}" class="nav-link active">Kirish</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+</header>
